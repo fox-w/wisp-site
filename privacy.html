@@ -38,7 +38,7 @@
         margin: 0 auto;
       }
       .mark {
-        color: var(--accent);
+        color: var(--ink);
         font-weight: 700;
         letter-spacing: 0.01em;
         font-size: 20px;
@@ -74,51 +74,88 @@
   </head>
   <body>
     <main>
-      <p class="mark">b<span style="color: var(--ink)">reezia</span></p>
+      <p class="mark">breez</p>
       <h1>Privacy policy</h1>
-      <p class="updated">Last updated: September 25, 2026</p>
-
-      <p>Breez was previously called Breezia, and before that Wisp.</p>
+      <p class="updated">Last updated: September 27, 2026</p>
 
       <p>
-        Breez is built to be private by design. The short version:
-        <strong>your reading is yours. Your documents, positions, settings, and stats never
-        leave your device.</strong> The only thing Breez sends anywhere is anonymous usage
-        statistics, described below.
+        The short version: <strong>your reading stays on your device unless you choose otherwise.</strong>
+        Breez works fully offline with no account. Some Pro features need the internet, and each one is
+        described below, with exactly what it sends and to whom.
       </p>
 
       <h2>What stays on your device</h2>
       <p>
-        Everything you read and everything about how you read. The documents you import, your
-        reading positions, your settings, your reading stats, and your goals all live only on
-        your device. Breez works fully offline. There is no account and no sign up.
+        The documents you open, your reading positions, settings, stats, goals and saved passages live on
+        your device. Without an account, none of it leaves.
       </p>
 
-      <h2>What we collect</h2>
+      <h2>Anonymous usage statistics</h2>
       <p>
-        Breez collects anonymous usage statistics through
-        <a href="https://aptabase.com">Aptabase</a>, a privacy-focused, open
-        source analytics service: things like which features are used, which
-        reading speeds people choose, and how far readers get through setup.
-        These events contain no names, no accounts, no device identifiers, and
-        never any of your reading content. They cannot be linked to you. We use
-        them for one purpose: making Breez better.
+        Breez sends anonymous usage events through <a href="https://aptabase.com">Aptabase</a>, a
+        privacy-focused analytics service: which features are used, which paces people choose, how far
+        readers get through setup. Events carry no names, accounts, device identifiers or reading content,
+        and cannot be linked to you.
       </p>
-      <h2>App Store data</h2>
+
+      <h2>If you sign in</h2>
       <p>
-        Apple may show us anonymous, aggregate numbers such as download counts and crash reports,
-        governed by your own device settings and Apple's privacy policy. That data comes from Apple,
-        not from anything inside Breez.
+        An account is optional. You can sign in with Apple or Google so your library follows you between
+        devices. We keep the email address Apple or Google gives us (Apple lets you hide yours) and an
+        account id. Accounts are run on <a href="https://supabase.com">Supabase</a>, hosted in the United
+        States.
+      </p>
+
+      <h2>Pro features that use the internet</h2>
+      <p>
+        <strong>Sync and backup.</strong> Your library, positions, settings, stats, goals and saved passages
+        are stored in your account so they appear on your other devices. Only you can read them.
+      </p>
+      <p>
+        <strong>Reading aids (AI).</strong> When you ask Breez to define a word, explain a passage, recap
+        where you left off or summarise a chapter, the words involved (the word and its sentence, the
+        passage, or the text before your place) are sent through our server to
+        <a href="https://www.anthropic.com">Anthropic</a> to write the answer. Anthropic does not use this
+        to train its models. We count how many aids you use each month, not what they said.
+      </p>
+      <p>
+        <strong>Natural voices.</strong> When you listen with a natural voice, the text being read is sent
+        to our voice provider to make the audio, and the audio is stored in your account so it does not
+        have to be made twice.
+      </p>
+      <p>
+        <strong>Browse.</strong> Opening Wikipedia, news or essays loads them from those sites, which see
+        an ordinary request from your device, as a browser would.
+      </p>
+      <p>
+        <strong>Open in Breez from Safari and other apps.</strong> The page or text you send goes straight
+        into Breez on your device.
+      </p>
+
+      <h2>Purchases</h2>
+      <p>
+        Apple handles payment; we never see your card. <a href="https://www.revenuecat.com">RevenueCat</a>
+        tells Breez whether your Pro plan is active, using an anonymous id.
+      </p>
+
+      <h2>What we never do</h2>
+      <p>
+        We do not sell your data, show ads, or track you across other apps and websites.
       </p>
 
       <h2>Deleting your data</h2>
-      <p>Delete the app and everything is gone, because it only ever existed on your device.</p>
+      <p>
+        Without an account, deleting the app deletes everything. With an account, open the You tab and choose Delete account:
+        your account and everything stored in it are removed from our servers.
+      </p>
+
+      <h2>Children</h2>
+      <p>Breez is not directed to children under 13, and we do not knowingly collect their data.</p>
 
       <h2>Changes</h2>
-      <p>
-        If Breez ever adds an optional feature that needs data to leave your device, such as cloud
-        sync, it will be opt-in, clearly explained here first, and never the default.
-      </p>
+      <p>If this policy changes, the new version appears here with a new date.</p>
+
+      <p>Breez was previously called Breezia, and before that Wisp.</p>
 
       <h2>Contact</h2>
       <p>Questions? Write to <a href="mailto:wispreader@outlook.com">wispreader@outlook.com</a>.</p>
