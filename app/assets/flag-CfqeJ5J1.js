@@ -1,0 +1,1 @@
+const s=!0,c="https://rdjfhjlfjcmqstbxwogp.supabase.co",I="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJkamZoamxmamNtcXN0Ynh3b2dwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAzODYwNzYsImV4cCI6MjEwNTk2MjA3Nn0.XviJ_kSwd3AGMvXZHb0FQDpbksgTaaB5DX_4jlHpw-U",N=!!I;export{I as SUPABASE_ANON_KEY,c as SUPABASE_URL,N as SYNC_CONFIGURED,s as SYNC_ENABLED};
