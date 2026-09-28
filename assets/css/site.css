@@ -286,8 +286,9 @@ section { position: relative; }
 .how-phone { position: sticky; top: calc(50vh - min(34vh, 330px)); display: grid; place-items: center; height: min(68vh, 660px); }
 .how-phone .phone { height: 100%; width: auto; max-width: none; }
 .steps { list-style: none; margin: 0; padding: 0; }
-.step { min-height: 78vh; display: flex; flex-direction: column; justify-content: center; opacity: 0.28; transition: opacity 0.7s var(--ease-io); }
-.step.on { opacity: 1; }
+.step { min-height: 78vh; display: flex; flex-direction: column; justify-content: center; }
+.step h3 { color: var(--dim); transition: color 0.7s var(--ease-io); }
+.step.on h3 { color: var(--ink); }
 .step .num { font-family: var(--serif); color: var(--coral-ink); font-size: 17px; margin-bottom: 14px; }
 .step h3 { font-size: clamp(32px, 3.6vw, 50px); line-height: 1.1; letter-spacing: -0.03em; }
 .step p { font-family: var(--serif); color: var(--dim); font-size: clamp(18px, 1.7vw, 21px); line-height: 1.65; margin-top: 18px; max-width: 34ch; }
@@ -298,7 +299,8 @@ section { position: relative; }
 @media (max-width: 860px) {
   .how { grid-template-columns: 1fr; }
   .how-phone { display: none; }
-  .step { min-height: 0; opacity: 1; padding: 36px 0 44px; }
+  .step { min-height: 0; padding: 36px 0 44px; }
+  .step h3 { color: var(--ink); }
   .step .mobile-shot { display: block; margin: 34px auto 0; width: min(270px, 72vw); }
   .step .mobile-shot .shot { opacity: 1; }
 }
@@ -467,7 +469,7 @@ section { position: relative; }
   .lit-scene .pin { position: relative; height: auto; padding: 120px var(--gutter); }
   .lit .lw { opacity: 1; }
   .lit-scene .by { opacity: 1; }
-  .step { opacity: 1; }
+  .step h3 { color: var(--ink); }
 }
 .wall .still { display: none; position: relative; width: 100%; height: 150px; margin: 40px 0; }
 .wall .still .rsvp { font-size: clamp(44px, 7vw, 88px); }
