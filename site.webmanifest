@@ -1,0 +1,14 @@
+{
+  "name": "Breez",
+  "short_name": "Breez",
+  "description": "Reading that works for you. One word at a time, always in the same place, at a pace that is yours.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F4EFE6",
+  "theme_color": "#F4EFE6",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
