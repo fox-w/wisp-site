@@ -101,18 +101,35 @@
     const y = scrollY;
     if ((y > 24) !== navOn) { navOn = y > 24; nav.classList.toggle('scrolled', navOn); }
     if (reduce.matches) return;
+    // Every scene is computed every frame (there are only a few), so a fast
+    // scroll or a jump from the nav always leaves each one at its true resting
+    // state: fully played above the viewport, untouched below it.
     for (const s of scenes) {
       const r = s.getBoundingClientRect();
-      if (r.bottom < -50 || r.top > vh + 50) continue;
       const sticky = s.firstElementChild && s.firstElementChild.classList.contains('pin');
       const p = sticky ? clamp(-r.top / Math.max(1, r.height - vh), 0, 1) : clamp((vh - r.top) / (vh * 0.85), 0, 1);
-      s.style.setProperty('--p', p.toFixed(4));
+      // Far below the viewport a scene keeps its default (finished) state, so
+      // it never reads as half drawn; it is primed just before it arrives.
+      const v = r.top > vh * 2.5 ? '' : p.toFixed(4);
+      if (s._p !== v) { s._p = v; v ? s.style.setProperty('--p', v) : s.style.removeProperty('--p'); }
     }
   }
-  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+  // Reveals the viewport skipped past (fast scroll, nav jump) settle instantly
+  // instead of waiting, half-drawn, for a scroll back up.
+  let settleT = 0;
+  function settle() {
+    for (const el of $$('.rv:not(.in)')) {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < 0) { el.classList.add('now', 'in'); rvObs.unobserve(el); }
+      else if (r.top < vh) { el.classList.add('in'); rvObs.unobserve(el); }
+    }
+  }
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } clearTimeout(settleT); settleT = setTimeout(settle, 120); };
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', () => { vh = innerHeight; measureKeep(); onScroll(); });
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { measureKeep(); onScroll(); });
+  addEventListener('hashchange', () => setTimeout(settle, 50));
+  if (location.hash) addEventListener('load', () => setTimeout(settle, 50));
   measureKeep();
   frame();
 
