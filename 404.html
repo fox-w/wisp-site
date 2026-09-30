@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<script>
+// /i/<code> invite links (docs/REFERRALS.md in fox-w/wisp): GitHub Pages has no
+// rewrites, so the not-found page forwards them to the invite page at once.
+(function () {
+  var m = /^\/i\/([A-Za-z0-9-]{4,24})\/?$/.exec(location.pathname);
+  if (m) location.replace('/i/?c=' + encodeURIComponent(m[1].toLowerCase()));
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Breez · Page not found</title>
 <meta name="description" content="This page is not here." />

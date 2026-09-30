@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "Z58AZ28U93.app.wisp.mobile"
+        ],
+        "components": [
+          {
+            "/": "/i/*",
+            "comment": "Invite links: breezreader.com/i/<code>"
+          }
+        ]
+      }
+    ]
+  }
+}
