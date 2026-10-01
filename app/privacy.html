@@ -76,7 +76,7 @@
     <main>
       <p class="mark">breez</p>
       <h1>Privacy policy</h1>
-      <p class="updated">Last updated: September 28, 2026</p>
+      <p class="updated">Last updated: September 29, 2026</p>
 
       <p>
         The short version:
@@ -102,10 +102,13 @@
 
       <h2>If you sign in</h2>
       <p>
-        An account is optional. You can sign in with Apple or Google so your library follows you
-        between devices. We keep the email address Apple or Google gives us (Apple lets you hide
-        yours) and an account id. Accounts are run on <a href="https://supabase.com">Supabase</a>,
-        hosted in the United States.
+        An account is optional. You can sign in with Apple, with Google, or with your email and a
+        one-time code, so your library, invites and Pro follow you between devices. There is no
+        password. We keep the email address Apple or Google gives us (Apple lets you hide yours), or
+        the one you type if you choose email sign-in, and an account id. Your email is used only to
+        sign you in: the code is sent to it by our email service, and we never send marketing to it.
+        Accounts are run on <a href="https://supabase.com">Supabase</a>, hosted in the United
+        States.
       </p>
 
       <h2>Pro features that use the internet</h2>
@@ -118,8 +121,10 @@
         <strong>Reading aids (AI).</strong> When you ask Breez to define a word, explain a passage,
         recap where you left off or summarise a chapter, the words involved (the word and its
         sentence, the passage, or the text before your place) are sent through our server to
-        <a href="https://www.anthropic.com">Anthropic</a> to write the answer. Anthropic does not
-        use this to train its models. We count how many aids you use each month, not what they said.
+        <a href="https://ai.google.dev">Google's Gemini API</a> to write the answer. We use Google's
+        paid service, so Google does not use this to train its models; it keeps requests for up to
+        55 days only to check for abuse. Nothing that identifies you is sent with them. We count how
+        many aids you use, not what they said.
       </p>
       <p>
         <strong>Natural voices.</strong> When you listen with a natural voice, the text being read
@@ -133,6 +138,22 @@
       <p>
         <strong>Open in Breez from Safari and other apps.</strong> The page or text you send goes
         straight into Breez on your device.
+      </p>
+
+      <h2>Invites</h2>
+      <p>
+        If you invite friends, your account gets an invite code, and we record which friends joined
+        from it and the free weeks each of you got. A friend who joins is shown to you by their
+        first name, from their Apple or Google account, or as “A friend”; they are told this when
+        they claim their week. Nothing else about them, and nothing about their reading, is ever
+        shown.
+      </p>
+      <p>
+        To keep one free week per device, Breez sends a scrambled (hashed) version of a random id it
+        made on your device, which our server scrambles again before keeping it. On iPhone it also
+        uses Apple’s DeviceCheck, where Apple remembers two yes-or-no marks for the device and we
+        keep nothing. Neither can be turned back into your device’s id, and neither is used for
+        anything else.
       </p>
 
       <h2>Purchases</h2>
