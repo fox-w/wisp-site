@@ -34,6 +34,8 @@
 .invite-paths .store { justify-content: flex-start; text-decoration: none; }
 .invite-paths [hidden] { display: none !important; }
 .invite-soon { font-size: 15px !important; color: var(--dim) !important; margin: 4px 0 0 !important; }
+.invite-copied { font-size: 14px !important; color: var(--dim) !important; margin: -4px 0 4px !important; text-align: center; }
+.invite-paths button.btn { border: 0; cursor: pointer; font: inherit; }
 </style>
 </head>
 <body>
@@ -81,14 +83,17 @@
 
     <div class="card" id="invite-card">
       <h2>Your first week of Pro is free</h2>
-      <p>Make an account with Apple or Google from this invite and a week of Breez Pro starts. Your friend gets a week too, once you have read your first pages. There is nothing to pay and nothing to cancel.</p>
+      <p id="invite-how">On iPhone, your week of Breez Pro starts as soon as you open Breez from this invite, with no account to make. On the web or Android, make an account with Apple, Google or email and it starts. Your friend gets a week too, once you have read your first pages. There is nothing to pay and nothing to cancel.</p>
       <p class="invite-code-label">Your invite code</p>
       <p class="invite-code" id="invite-code">(none)</p>
-      <p>If you install Breez from a store, the code cannot travel with it. Type it on the welcome screen under <strong>Have an invite code?</strong>, or later under You, <strong>Invite friends, read free</strong>.</p>
+      <p>A store install cannot carry this link, so <strong>Get Breez</strong> copies your code as you tap it. When Breez opens, tap <strong>Paste</strong> under <strong>Got an invite from a friend?</strong> on the welcome screen. Nothing is read from your clipboard unless you tap Paste. You can always type the code there instead.</p>
     </div>
 
     <div class="invite-paths" id="invite-paths">
       <a class="btn btn-pri" id="open-app" href="wisp://invite/" hidden>Open in Breez</a>
+      <a class="btn btn-pri" id="get-breez" href="#" hidden>Get Breez</a>
+      <p class="invite-copied" id="invite-copied" hidden aria-live="polite">Your invite code is copied</p>
+      <button type="button" class="btn btn-quiet" id="copy-code" hidden>Copy the code</button>
       <a class="store" id="app-store" href="#" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 5.5h3"/></svg><div><small>Get Breez on the</small><span>App Store</span></div></a>
       <a class="store" id="google-play" href="#" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 5.5h3"/></svg><div><small>Get Breez on</small><span>Google Play</span></div></a>
       <a class="btn btn-pri" id="read-web" href="/app/">Read on the web</a>
@@ -146,7 +151,51 @@
     return;
   }
 
-  $('invite-code').textContent = code;
+  var shown = code.toUpperCase();
+  $('invite-code').textContent = shown;
+
+  // Copy "Breez invite: <CODE>" for the app's welcome-screen Paste. Only ever
+  // on a tap (a click handler), and the page says so. Nothing is read.
+  function copyCode() {
+    var text = 'Breez invite: ' + shown;
+    var done = function () { $('invite-copied').hidden = false; };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text).then(done, function () { return fallbackCopy(text, done); });
+      }
+    } catch (e) {}
+    return Promise.resolve(fallbackCopy(text, done));
+  }
+  function fallbackCopy(text, done) {
+    try {
+      var t = document.createElement('textarea');
+      t.value = text;
+      t.setAttribute('readonly', '');
+      t.style.position = 'fixed';
+      t.style.opacity = '0';
+      document.body.appendChild(t);
+      t.select();
+      var ok = document.execCommand('copy');
+      document.body.removeChild(t);
+      if (ok) done();
+    } catch (e) {}
+  }
+  // The store button: copy first (in the same tap), then go.
+  function getBreez(url) {
+    var b = $('get-breez');
+    b.href = url;
+    b.hidden = false;
+    b.addEventListener('click', function (e) {
+      e.preventDefault();
+      var go = function () { location.href = url; };
+      var p = copyCode();
+      // Never wait long: the store matters more than the copy.
+      var t = setTimeout(go, 600);
+      if (p && p.then) p.then(function () { clearTimeout(t); setTimeout(go, 250); });
+    });
+  }
+  $('copy-code').hidden = false;
+  $('copy-code').addEventListener('click', function () { copyCode(); });
   document.title = 'Breez · A friend invited you';
   $('read-web').href = '/app/?invite=' + encodeURIComponent(code);
 
@@ -165,9 +214,11 @@
     $('open-app').href = 'wisp://invite/' + encodeURIComponent(code);
     $('open-app').hidden = false;
     $('read-web').className = 'btn btn-quiet';
-    store('app-store', LINKS.appStore, 'Breez for iPhone is coming soon to the App Store.');
+    if (LINKS.appStore) getBreez(LINKS.appStore);
+    else soon.push('Breez for iPhone is coming soon to the App Store.');
   } else if (android) {
-    store('google-play', LINKS.googlePlay, 'Breez for Android is coming soon to Google Play.');
+    if (LINKS.googlePlay) getBreez(LINKS.googlePlay);
+    else soon.push('Breez for Android is coming soon to Google Play.');
   } else {
     store('mac-app', LINKS.mac, null);
     store('chrome-ext', LINKS.chrome, null);
