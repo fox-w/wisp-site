@@ -1,0 +1,1 @@
+const e="/app/assets/worker.min-32WLk7pY.js",r="/app/assets/tesseract-core-simd-lstm.wasm-D4IWHdQk.js",t="/app/assets/tesseract-core-lstm.wasm-DhgzXyTR.js";function a(s){return new URL(".",s).href.replace(/\/$/,"")}export{t as corePlainUrl,r as coreSimdUrl,a as englishDir,e as workerUrl};
