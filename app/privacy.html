@@ -76,13 +76,13 @@
     <main>
       <p class="mark">breez</p>
       <h1>Privacy policy</h1>
-      <p class="updated">Last updated: October 2, 2026</p>
+      <p class="updated">Last updated: October 12, 2026</p>
 
       <p>
         The short version:
         <strong>your reading stays on your device unless you choose otherwise.</strong>
-        Breez works fully offline with no account. Some Pro features need the internet, and each one
-        is described below, with exactly what it sends and to whom.
+        Breez works fully offline with no account. Some features need the internet, and each one is
+        described below, with exactly what it sends and to whom.
       </p>
 
       <h2>What stays on your device</h2>
@@ -113,9 +113,9 @@
         one-time code, so your library, invites and Pro follow you between devices. There is no
         password. We keep the email address Apple or Google gives us (Apple lets you hide yours), or
         the one you type if you choose email sign-in, and an account id. Your email is used only to
-        sign you in: the code is sent to it by our email service, and we never send marketing to it.
-        Accounts are run on <a href="https://supabase.com">Supabase</a>, hosted in the United
-        States.
+        sign you in: the code is sent to it by our email service,
+        <a href="https://resend.com">Resend</a>, and we never send marketing to it. Accounts are run
+        on <a href="https://supabase.com">Supabase</a>, hosted in the United States.
       </p>
       <p>
         On the web, the Google button on the sign-in sheet is Google's own, so its script loads from
@@ -126,27 +126,41 @@
         <a href="https://policies.google.com/privacy">Google's privacy policy</a>.
       </p>
 
-      <h2>Pro features that use the internet</h2>
+      <h2>Features that use the internet</h2>
       <p>
-        <strong>Sync and backup.</strong> Your library, positions, settings, stats, goals and saved
-        passages are stored in your account so they appear on your other devices. Only you can read
-        them.
+        <strong>Sync and backup</strong> (Breez Pro). Your library, positions, settings, stats,
+        goals and saved passages are stored in your account so they appear on your other devices.
+        Only you can read them.
       </p>
       <p id="reading-aids">
-        <strong>Reading aids (AI).</strong> When you ask Breez to define a word, explain a passage,
-        recap where you left off or summarise a chapter, the words involved (the word and its
-        sentence, the passage, or the text before your place) are sent through our server to
-        <a href="https://ai.google.dev">Google's Gemini API</a> to write the answer. We use Google's
-        paid service, so Google does not use this to train its models; it keeps requests for up to
-        55 days only to check for abuse. Nothing that identifies you is sent with them. We count how
-        many aids you use, not what they said. The first time you use a reading aid, Breez tells you
-        this and asks your permission; nothing is sent until you agree. You can turn the reading
-        aids off at any time in Settings, Reading aids.
+        <strong>Reading aids.</strong> Reading aids use Google's Gemini AI to write explanations of
+        the passage you choose. Free readers get a few a day; Breez Pro gets more. When you ask
+        Breez to define a word, explain a passage, recap where you left off or summarise a chapter,
+        the words involved (the word and its sentence, the passage, or the text before your place)
+        are sent through our server to <a href="https://ai.google.dev">Google's Gemini API</a> to
+        write the answer. We use Google's paid service, so Google does not use this to train its
+        models; it keeps requests for up to 55 days only to check for abuse. Nothing that identifies
+        you is sent with them. We count how many aids you use, not what they said. The first time
+        you use a reading aid, Breez tells you this and asks your permission; nothing is sent until
+        you agree. You can turn the reading aids off at any time in Settings, Reading aids.
       </p>
       <p>
-        <strong>Natural voices.</strong> When you listen with a natural voice, the text being read
-        is sent to our voice provider to make the audio, and the audio is stored in your account so
-        it does not have to be made twice.
+        <strong>Read aloud.</strong> Read aloud uses
+        <a href="https://deepinfra.com">DeepInfra</a> to make the voice audio, with Kokoro, an open
+        voice model. It is free for about 10 minutes a day; Breez Pro gets more. The text being read
+        is sent through our server to DeepInfra to make the audio; nothing that identifies you is
+        sent with it. For your own files, pasted text and articles, the audio is kept in your
+        account so it does not have to be made twice. For public-domain books that read the same for
+        everyone (the bundled classics, Project Gutenberg, Standard Ebooks and Quick reads), the
+        audio is kept once and shared by every reader, with nothing linking it to you. To keep the
+        free daily read aloud fair, we count how much is read aloud per account and, scrambled
+        (hashed) so they cannot be turned back, per device id and network address; these counts are
+        used for nothing else.
+      </p>
+      <p>
+        <strong>App updates.</strong> The phone app downloads small updates to Breez through
+        <a href="https://expo.dev">Expo</a>'s update service. To do that it sends the app's version
+        and a random install id, never anything about you or your reading.
       </p>
       <p>
         <strong>Browse.</strong> Opening Wikipedia, news or essays loads them from those sites,
@@ -175,15 +189,15 @@
       <p>
         <strong>Your clipboard.</strong> Breez only touches your clipboard when you tap. On the
         invite page, tapping Get Breez copies the invite code, and the page says so. In the app,
-        tapping Paste on the welcome screen reads it once to find the code; on iPhone that button
-        is Apple’s own, so your tap is the permission. Breez keeps only the invite code, sends
-        nothing else, and never looks at your clipboard on its own.
+        tapping Paste on the welcome screen reads it once to find the code; on iPhone that button is
+        Apple’s own, so your tap is the permission. Breez keeps only the invite code, sends nothing
+        else, and never looks at your clipboard on its own.
       </p>
       <p>
         <strong>A friend’s week without an account.</strong> On iPhone, the week can start before
         you make an account. Breez then makes a private account with no name or email, and uses
-        Apple’s DeviceCheck so each iPhone gets the friend week only once. If you sign in later,
-        the week comes with you.
+        Apple’s DeviceCheck so each iPhone gets the friend week only once. If you sign in later, the
+        week comes with you.
       </p>
 
       <h2>Purchases</h2>
