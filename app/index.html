@@ -2,7 +2,10 @@
 <html lang="en" data-theme="paper" data-anchor="coral" data-font="atkinson">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- The phone app's build adds maximum-scale=1, user-scalable=no (no page
+         zoom in an app, shell/noPageZoom.ts; src/build/viewport.ts). The web
+         page leaves zoom to the reader's browser (WCAG 1.4.4). -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Breez: Reading that works for you</title>
     <meta
       name="description"
@@ -17,8 +20,8 @@
 
     <!-- All reading fonts are self-hosted via @fontsource (see src/main.tsx):
          no CDN request ever leaves the device, and every face works offline. -->
-    <script type="module" crossorigin src="/app/assets/index-SbtsPHex.js"></script>
-    <link rel="stylesheet" crossorigin href="/app/assets/index-DHKLJb34.css">
+    <script type="module" crossorigin src="/app/assets/index-BZsk_UIB.js"></script>
+    <link rel="stylesheet" crossorigin href="/app/assets/index-CnNhgbbt.css">
   <link rel="manifest" href="/app/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/app/registerSW.js"></script></head>
   <body>
     <div id="root"></div>
