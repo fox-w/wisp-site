@@ -7,8 +7,6 @@ Alice’s Adventures in Wonderland\r
 \r
 by Lewis Carroll\r
 \r
-THE MILLENNIUM FULCRUM EDITION 3.0\r
-\r
 Contents\r
 \r
  CHAPTER I.     Down the Rabbit-Hole\r
