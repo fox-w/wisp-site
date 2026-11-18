@@ -1,0 +1,1 @@
+const o=!0,t="https://rdjfhjlfjcmqstbxwogp.supabase.co",s="sb_publishable_gbdQH8x1sYWJNLYfUujEmw_8YKuhML2",_=!!s;export{s as SUPABASE_ANON_KEY,t as SUPABASE_URL,_ as SYNC_CONFIGURED,o as SYNC_ENABLED};
