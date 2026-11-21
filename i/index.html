@@ -32,6 +32,7 @@
 .invite-paths .btn { color: var(--paper); text-decoration: none; }
 .invite-paths .btn-quiet { background: transparent; color: var(--coral-ink); box-shadow: inset 0 0 0 1px var(--line-strong); }
 .invite-paths .store { justify-content: flex-start; text-decoration: none; }
+.invite-paths .badge { align-self: flex-start; }
 .invite-paths [hidden] { display: none !important; }
 .invite-soon { font-size: 15px !important; color: var(--dim) !important; margin: 4px 0 0 !important; }
 .invite-copied { font-size: 14px !important; color: var(--dim) !important; margin: -4px 0 4px !important; text-align: center; }
@@ -69,7 +70,7 @@
         <li><a href="/#how">How it works</a></li>
         <li><a href="/#pro">Pro</a></li>
         <li><a href="/support.html">Support</a></li>
-        <li class="keep"><a class="btn btn-pri btn-sm" href="https://breezreader.com/app/">Try it free</a></li>
+        <li class="keep"><a class="btn btn-pri btn-sm" href="https://apps.apple.com/app/id6804911917">Get Breez</a></li>
       </ul>
     </nav>
   </div>
@@ -83,7 +84,7 @@
 
     <div class="card" id="invite-card">
       <h2>Your first week of Pro is free</h2>
-      <p id="invite-how">On iPhone, your week of Breez Pro starts as soon as you open Breez from this invite, with no account to make. On the web or Android, make an account with Apple, Google or email and it starts. Your friend gets a week too, once you have read your first pages. There is nothing to pay and nothing to cancel.</p>
+      <p id="invite-how">On iPhone, your week of Breez Pro starts as soon as you open Breez from this invite, with no account to make. Your friend gets a week too, once you have read your first pages. There is nothing to pay and nothing to cancel.</p>
       <p class="invite-code-label">Your invite code</p>
       <p class="invite-code" id="invite-code">(none)</p>
       <p>A store install cannot carry this link, so <strong>Get Breez</strong> copies your code as you tap it. When Breez opens, tap <strong>Paste</strong> under <strong>Got an invite from a friend?</strong> on the welcome screen. Nothing is read from your clipboard unless you tap Paste. You can always type the code there instead.</p>
@@ -94,9 +95,8 @@
       <a class="btn btn-pri" id="get-breez" href="#" hidden>Get Breez</a>
       <p class="invite-copied" id="invite-copied" hidden aria-live="polite">Your invite code is copied</p>
       <button type="button" class="btn btn-quiet" id="copy-code" hidden>Copy the code</button>
-      <a class="store" id="app-store" href="#" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 5.5h3"/></svg><div><small>Get Breez on the</small><span>App Store</span></div></a>
+      <a class="badge" id="app-store" href="https://apps.apple.com/app/id6804911917" hidden><picture><source srcset="/assets/img/app-store-badge-white.svg" media="(prefers-color-scheme: dark)" /><img src="/assets/img/app-store-badge-black.svg" alt="Download on the App Store" width="162" height="54" /></picture></a>
       <a class="store" id="google-play" href="#" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 5.5h3"/></svg><div><small>Get Breez on</small><span>Google Play</span></div></a>
-      <a class="btn btn-pri" id="read-web" href="/app/">Read on the web</a>
       <a class="store" id="mac-app" href="#" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M8 20h8M12 16.5V20"/></svg><div><small>Download for</small><span>Mac</span></div></a>
       <a class="store" id="chrome-ext" href="#" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg><div><small>Add to</small><span>Chrome</span></div></a>
       <p class="invite-soon" id="invite-soon"></p>
@@ -108,7 +108,6 @@
   <div class="wrap">
     <a class="brand" href="/" aria-label="Breez, home"><svg viewBox="0 0 388 308" aria-hidden="true"><use href="#mark" /></svg>breez</a>
     <nav aria-label="Footer">
-      <a href="https://breezreader.com/app/">Breez on the web</a>
       <a href="/support.html">Support</a>
       <a href="/privacy.html">Privacy</a>
       <a href="mailto:hello@breezreader.com">Write to us</a>
@@ -124,7 +123,7 @@
 (function () {
   // Real store links go here when the listings exist (TODO.md). Until then
   // the page says "coming soon" rather than linking to nothing.
-  var LINKS = { appStore: null, googlePlay: null, mac: null, chrome: null };
+  var LINKS = { appStore: 'https://apps.apple.com/app/id6804911917', googlePlay: null, mac: null, chrome: null };
   var ALPHABET = 'abcdefghjkmnpqrstuvwxyz23456789';
 
   function clean(raw) {
@@ -147,7 +146,7 @@
   if (!code) {
     $('invite-title').textContent = 'This invite link looks incomplete.';
     $('invite-card').hidden = true;
-    $('read-web').textContent = 'Try Breez on the web';
+    $('app-store').hidden = false;
     return;
   }
 
@@ -197,7 +196,6 @@
   $('copy-code').hidden = false;
   $('copy-code').addEventListener('click', function () { copyCode(); });
   document.title = 'Breez · A friend invited you';
-  $('read-web').href = '/app/?invite=' + encodeURIComponent(code);
 
   function store(id, url, label) {
     if (url) {
@@ -213,16 +211,17 @@
     // loads (a universal link); this button is for the times it did not.
     $('open-app').href = 'wisp://invite/' + encodeURIComponent(code);
     $('open-app').hidden = false;
-    $('read-web').className = 'btn btn-quiet';
     if (LINKS.appStore) getBreez(LINKS.appStore);
     else soon.push('Breez for iPhone is coming soon to the App Store.');
   } else if (android) {
     if (LINKS.googlePlay) getBreez(LINKS.googlePlay);
-    else soon.push('Breez for Android is coming soon to Google Play.');
+    else soon.push('Breez for Android is coming soon.');
   } else {
+    // Desktop: the iPhone app is the way in for now (send the link to your phone).
+    store('app-store', LINKS.appStore, null);
     store('mac-app', LINKS.mac, null);
     store('chrome-ext', LINKS.chrome, null);
-    if (!LINKS.mac || !LINKS.chrome) soon = ['The Mac app and the Chrome extension are on their way. Everything works on the web today.'];
+    soon.push('On iPhone now. Soon on the web, Android, Mac and Windows.');
   }
   $('invite-soon').textContent = soon.filter(Boolean).join(' ');
 })();

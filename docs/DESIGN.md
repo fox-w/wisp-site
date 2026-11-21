@@ -76,6 +76,7 @@ accessibility, best practices and SEO for all three pages.
 
 ## Open decisions
 
-- Swap the "Coming soon to the App Store" pill for Apple's official badge and the real link once
+- Done 2026-11-21 (ios-first-137): the official badge and the real link replace the pill, the web
+  app is no longer linked (it still works at /app). Earlier note: swap the pill once
   the listing is live (Apple's badge may not be altered, which is why the pill is our own).
 - The contact address is still wispreader@outlook.com until a Breez address exists.

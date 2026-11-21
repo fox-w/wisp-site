@@ -143,6 +143,11 @@ button, input { font: inherit; color: inherit; }
 .store small { display: block; font-size: 12px; line-height: 1.2; color: var(--dim); }
 .store span { display: block; font-weight: 700; font-size: 16px; line-height: 1.2; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: center; }
+/* Apple's official badge, unaltered (black on Paper, white on Paper Night). Apple asks for at least 40px tall on screen. */
+.badge { display: inline-block; line-height: 0; border-radius: 10px; }
+.badge img { display: block; height: 54px; width: auto; }
+.badge:focus-visible { outline: 2px solid var(--coral); outline-offset: 4px; }
+.avail-line { width: 100%; margin: 4px 0 0; font-size: 15px; line-height: 1.5; color: var(--dim); text-wrap: balance; }
 
 /* ---------- Mark drawing itself ---------- */
 .mark-draw .b1, .mark-draw .b2 { clip-path: inset(0 0 0 0); }
